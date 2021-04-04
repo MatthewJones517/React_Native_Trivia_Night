@@ -28,7 +28,7 @@ export const Provider = (props) => {
     // Filter out the questions that have been reported as Invalid
     // (Require a picture, audio clip, etc...)
     const filteredQuestions = returnedQuestions.filter(
-      (question) => question.invalid_count !== null
+      (question) => question.invalid_count === null
     );
 
     // Make sure we have at least 10 questions. If not, keep pinging the API
@@ -43,8 +43,6 @@ export const Provider = (props) => {
 
     // Flip the questions loading flag back.
     setQuestionsLoading(false);
-
-    console.log(questions);
   };
 
   const handleRevealAnswer = false;
