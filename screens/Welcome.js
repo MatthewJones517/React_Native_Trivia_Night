@@ -5,7 +5,7 @@ import { useFonts } from "expo-font";
 import Wrapper from "../components/Wrapper";
 import BigOrangeButton from "../components/BigOrangeButton";
 
-const Welcome = () => {
+const Welcome = ({ navigation }) => {
   // Load Roboto as custom Google Font. Don't display screen until it's in.
   let [fontsLoaded] = useFonts({
     "Roboto-Bold": require("../assets/fonts/Roboto/Roboto-Bold.ttf"),
@@ -18,7 +18,11 @@ const Welcome = () => {
       // Display Welcome Screen
       <Wrapper>
         <Image source={require("../assets/logo.png")} style={styles.image} />
-        <BigOrangeButton width="350" height="150">
+        <BigOrangeButton
+          width="350"
+          height="150"
+          handlePress={() => navigation.navigate("Play")}
+        >
           <Text style={styles.buttonText}>START GAME</Text>
         </BigOrangeButton>
       </Wrapper>
