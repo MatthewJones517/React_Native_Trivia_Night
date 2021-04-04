@@ -6,7 +6,6 @@ import Wrapper from "../components/Wrapper";
 import BigOrangeButton from "../components/BigOrangeButton";
 
 const Welcome = ({ navigation }) => {
-  // Load Roboto as custom Google Font. Don't display screen until it's in.
   let [fontsLoaded] = useFonts({
     "Roboto-Bold": require("../assets/fonts/Roboto/Roboto-Bold.ttf"),
   });
