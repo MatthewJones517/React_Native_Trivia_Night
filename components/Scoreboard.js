@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Text, View, StyleSheet, ActivityIndicator } from "react-native";
 import { useFonts } from "expo-font";
+import { GameContext } from "../components/Context";
 
 const Scoreboard = () => {
+  // Bring in Game Context
+  const { score, questionNumber } = useContext(GameContext);
+
   let [fontsLoaded] = useFonts({
     "Roboto-Bold": require("../assets/fonts/Roboto/Roboto-Bold.ttf"),
     "Roboto-Regular": require("../assets/fonts/Roboto/Roboto-Regular.ttf"),
@@ -15,8 +19,10 @@ const Scoreboard = () => {
     return (
       <View style={styles.container}>
         <Text style={[styles.white, styles.title]}>SCORE:</Text>
-        <Text style={[styles.white, styles.score]}>500</Text>
-        <Text style={[styles.white, styles.questionNum]}>Question 2 of 10</Text>
+        <Text style={[styles.white, styles.score]}>{score}</Text>
+        <Text style={[styles.white, styles.questionNum]}>
+          Question {questionNumber} of 10
+        </Text>
       </View>
     );
   }
