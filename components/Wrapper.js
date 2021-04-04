@@ -17,6 +17,9 @@ const Wrapper = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
