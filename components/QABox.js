@@ -1,24 +1,37 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, StyleSheet, ActivityIndicator } from "react-native";
 import { useFonts } from "expo-font";
+import { GameContext } from "../components/Context";
 
 const QABox = () => {
+  const {
+    questionsLoading,
+    isAnswerRevealed,
+    questions,
+    questionNumber,
+  } = useContext(GameContext);
+
   let [fontsLoaded] = useFonts({
     "Roboto-Regular": require("../assets/fonts/Roboto/Roboto-Regular.ttf"),
   });
 
-  if (!fontsLoaded) {
+  if (!fontsLoaded || questionsLoading) {
     return <ActivityIndicator />;
-  } else {
+  }
+
+  if (!questionsLoading && questions.length === 0) {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>
-          Animal Planet is on its 11th version of this annual feature with a
-          different feel from the big football game
-        </Text>
+        <Text style={styles.text}>Error reaching question API.</Text>
       </View>
     );
   }
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>{questions[questionNumber - 1].question}</Text>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
