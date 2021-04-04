@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, ActivityIndicator } from "react-native";
 import { useFonts } from "expo-font";
 
 import Wrapper from "../components/Wrapper";
@@ -12,7 +12,7 @@ const Welcome = ({ navigation }) => {
   });
 
   if (!fontsLoaded) {
-    return <View />;
+    return <ActivityIndicator />;
   } else {
     return (
       // Display Welcome Screen
