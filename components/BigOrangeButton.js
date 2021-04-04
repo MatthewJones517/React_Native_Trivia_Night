@@ -1,7 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-const BigOrangeButton = ({ width, height, children }) => {
+const BigOrangeButton = ({ width, height, handlePress, children }) => {
   // Tweak sizing based on passed in props to create the cool double color effect
   const backgroundProps = {
     width: width - 5,
@@ -16,10 +17,12 @@ const BigOrangeButton = ({ width, height, children }) => {
 
   // Display the actual button
   return (
-    <View>
-      <View style={[styles.background, backgroundProps]} />
-      <View style={[styles.foreground, foregroundProps]}>{children}</View>
-    </View>
+    <TouchableOpacity onPress={handlePress}>
+      <View>
+        <View style={[styles.background, backgroundProps]} />
+        <View style={[styles.foreground, foregroundProps]}>{children}</View>
+      </View>
+    </TouchableOpacity>
   );
 };
 
