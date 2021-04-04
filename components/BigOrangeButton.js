@@ -14,6 +14,7 @@ const BigOrangeButton = ({ width, height, children }) => {
     marginTop: 0 - height,
   };
 
+  // Display the actual button
   return (
     <View>
       <View style={[styles.background, backgroundProps]} />

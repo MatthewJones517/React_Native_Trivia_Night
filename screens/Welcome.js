@@ -6,6 +6,7 @@ import Wrapper from "../components/Wrapper";
 import BigOrangeButton from "../components/BigOrangeButton";
 
 const Welcome = () => {
+  // Load Roboto as custom Google Font. Don't display screen until it's in.
   let [fontsLoaded] = useFonts({
     "Roboto-Bold": require("../assets/fonts/Roboto/Roboto-Bold.ttf"),
   });
@@ -14,6 +15,7 @@ const Welcome = () => {
     return <View />;
   } else {
     return (
+      // Display Welcome Screen
       <Wrapper>
         <Image source={require("../assets/logo.png")} style={styles.image} />
         <BigOrangeButton width="350" height="150">
