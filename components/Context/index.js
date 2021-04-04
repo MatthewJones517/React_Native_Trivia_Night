@@ -7,6 +7,7 @@ export const Provider = (props) => {
   const [questions, setQuestions] = useState([]);
   const [questionsLoading, setQuestionsLoading] = useState(false);
   const [isAnswerRevealed, setIsAnswerRevealed] = useState(false);
+  const [questionNumber, setQuestionNumber] = useState(1);
 
   const handleNewGame = async () => {
     // Flip questions loading flag
@@ -55,6 +56,7 @@ export const Provider = (props) => {
         isAnswerRevealed,
         questions,
         questionsLoading,
+        questionNumber,
         actions: {
           updateScore: handleUpdateScore,
           revealAnswer: handleRevealAnswer,
