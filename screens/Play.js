@@ -1,8 +1,16 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, SafeAreaView } from "react-native";
+
+import Wrapper from "../components/Wrapper";
 
 const Play = () => {
-  return <Text>Gameplay Screen</Text>;
+  return (
+    <Wrapper>
+      <SafeAreaView>
+        <Text>Gameplay Screen</Text>
+      </SafeAreaView>
+    </Wrapper>
+  );
 };
 
 export default Play;
