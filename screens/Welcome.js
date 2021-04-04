@@ -6,7 +6,7 @@ const Welcome = () => {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={["rgba(0,0,0,0)", "rgba(0,0,0,0.8)"]}
+        colors={["rgba(0,0,0,0)", "rgba(0,0,0,0.65)"]}
         style={styles.background}
       />
       <Text>Welcome Screen</Text>
