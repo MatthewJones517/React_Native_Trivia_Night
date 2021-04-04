@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ActivityIndicator } from "react-native";
 import { useFonts } from "expo-font";
 
 const QABox = () => {
@@ -24,7 +24,7 @@ const QABox = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#ffffff",
-    marginTop: 30,
+    marginVertical: 30,
     padding: 20,
     width: 350,
     height: 350,
