@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, StyleSheet, Text } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import { useFonts } from "expo-font";
 
 import Wrapper from "../components/Wrapper";
