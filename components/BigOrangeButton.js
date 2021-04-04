@@ -1,30 +1,40 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const BigOrangeButton = () => {
+const BigOrangeButton = ({ width, height, children }) => {
+  // Tweak sizing based on passed in props to create the cool double color effect
+  const backgroundProps = {
+    width: width - 5,
+    height: height - 5,
+  };
+
+  const foregroundProps = {
+    width: width - 10,
+    height: height - 10,
+    marginTop: 0 - height,
+  };
+
   return (
     <View>
-      <View style={styles.background} />
-      <View style={styles.foreground} />
+      <View style={[styles.background, backgroundProps]} />
+      <View style={[styles.foreground, foregroundProps]}>{children}</View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   background: {
-    width: 345,
-    height: 145,
     backgroundColor: "#FF914D",
     borderRadius: 30,
   },
   foreground: {
-    width: 340,
-    height: 140,
     backgroundColor: "#FFDE59",
     borderRadius: 30,
-    marginTop: -150,
     marginLeft: -5,
     zIndex: 100,
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
   },
 });
 
