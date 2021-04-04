@@ -2,14 +2,14 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-const Wrapper = (props) => {
+const Wrapper = ({ children }) => {
   return (
     <View style={styles.container}>
       <LinearGradient
         colors={["rgba(0,0,0,0)", "rgba(0,0,0,0.65)"]}
         style={styles.background}
       />
-      {props.children}
+      {children}
     </View>
   );
 };
