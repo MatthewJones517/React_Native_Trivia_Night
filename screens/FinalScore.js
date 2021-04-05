@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Image, StyleSheet, Text, ActivityIndicator, View } from "react-native";
 import { useFonts } from "expo-font";
+import { GameContext } from "../components/Context";
 
 import Wrapper from "../components/Wrapper";
 import BigOrangeButton from "../components/BigOrangeButton";
 
 const FinalScore = ({ navigation }) => {
+  // Bring in Game Context
+  const { score, actions } = useContext(GameContext);
+
   let [fontsLoaded] = useFonts({
     "Roboto-Bold": require("../assets/fonts/Roboto/Roboto-Bold.ttf"),
   });
@@ -21,13 +25,14 @@ const FinalScore = ({ navigation }) => {
 
       <View style={styles.scoreContainer}>
         <Text style={styles.scoreText}>FINAL SCORE:</Text>
-        <Text style={styles.scoreText}>5000</Text>
+        <Text style={styles.scoreText}>{score}</Text>
       </View>
 
       <BigOrangeButton
         width="350"
         height="150"
         handlePress={() => {
+          actions.resetGame();
           navigation.navigate("Play");
         }}
       >

@@ -58,6 +58,7 @@ export const Provider = (props) => {
   const handleRevealAnswer = () => {
     setIsAnswerRevealed(true);
   };
+
   const handleUpdateScore = (answeredCorrectly) => {
     setIsAnswerRevealed(false);
 
@@ -74,6 +75,13 @@ export const Provider = (props) => {
     }
   };
 
+  const handleGameReset = () => {
+    setScore(0);
+    setQuestions([]);
+    setQuestionNumber(1);
+    handleNewGame();
+  };
+
   return (
     <GameContext.Provider
       value={{
@@ -86,6 +94,7 @@ export const Provider = (props) => {
           updateScore: handleUpdateScore,
           revealAnswer: handleRevealAnswer,
           newGame: handleNewGame,
+          resetGame: handleGameReset,
         },
       }}
     >
