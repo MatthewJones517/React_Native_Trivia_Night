@@ -30,14 +30,18 @@ const QABox = () => {
   if (isAnswerRevealed) {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>{questions[questionNumber - 1].answer}</Text>
+        <Text style={styles.text}>
+          {questions[questionNumber - 1].answer.replace(/\\/g, "")}
+        </Text>
       </View>
     );
   }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{questions[questionNumber - 1].question}</Text>
+      <Text style={styles.text}>
+        {questions[questionNumber - 1].question.replace(/\\/g, "")}
+      </Text>
     </View>
   );
 };

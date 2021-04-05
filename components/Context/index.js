@@ -34,7 +34,8 @@ export const Provider = (props) => {
           question.invalid_count === null &&
           question.value !== null &&
           question.question !== null &&
-          question.answer !== null
+          question.answer !== null &&
+          question.answer.includes("<i>") === false // Seriously...
         );
       });
 
