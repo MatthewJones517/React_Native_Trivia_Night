@@ -49,7 +49,9 @@ export const Provider = (props) => {
     }
   };
 
-  const handleRevealAnswer = false;
+  const handleRevealAnswer = () => {
+    setIsAnswerRevealed(true);
+  };
   const handleUpdateScore = false;
 
   return (

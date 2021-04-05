@@ -15,9 +15,7 @@ import ScoringButtons from "../components/ScoringButtons";
 
 const Play = () => {
   // Bring in Game Context
-  const { actions, questionsLoading, isAnswerRevealed } = useContext(
-    GameContext
-  );
+  const { actions, isAnswerRevealed } = useContext(GameContext);
 
   // We only want this to be called once per game, so calling the API after
   // initial componenet render
@@ -25,22 +23,18 @@ const Play = () => {
     actions.newGame();
   }, []);
 
-  if (questionsLoading) {
-    return <ActivityIndicator />;
-  } else {
-    return (
-      <Wrapper>
-        <SafeAreaView style={styles.container}>
-          <Header />
-          <QABox />
-          {
-            // Display appropriate buttons
-            isAnswerRevealed ? <ScoringButtons /> : <RevealButton />
-          }
-        </SafeAreaView>
-      </Wrapper>
-    );
-  }
+  return (
+    <Wrapper>
+      <SafeAreaView style={styles.container}>
+        <Header />
+        <QABox />
+        {
+          // Display appropriate buttons
+          isAnswerRevealed ? <ScoringButtons /> : <RevealButton />
+        }
+      </SafeAreaView>
+    </Wrapper>
+  );
 };
 
 const styles = StyleSheet.create({

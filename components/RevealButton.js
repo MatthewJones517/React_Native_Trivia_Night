@@ -1,25 +1,32 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Text, ActivityIndicator, StyleSheet } from "react-native";
 import { useFonts } from "expo-font";
+import { GameContext } from "../components/Context";
 
 import BigOrangeButton from "../components/BigOrangeButton";
 
 const RevealButton = () => {
+  const { questions, questionNumber, actions, questionsLoading } = useContext(
+    GameContext
+  );
+
   let [fontsLoaded] = useFonts({
     "Roboto-Bold": require("../assets/fonts/Roboto/Roboto-Bold.ttf"),
   });
 
-  if (!fontsLoaded) {
+  if (!fontsLoaded || questionsLoading) {
     return <ActivityIndicator />;
   } else {
     return (
       <BigOrangeButton
         width="300"
         height="125"
-        handlePress={() => console.log("pressed")}
+        handlePress={() => actions.revealAnswer()}
       >
         <Text style={styles.revealButtonTextHead}>REVEAL ANSWER</Text>
-        <Text style={styles.revealButtonTextPoints}>Point Value: 200</Text>
+        <Text style={styles.revealButtonTextPoints}>
+          Point Value: {questions[questionNumber - 1].value}
+        </Text>
       </BigOrangeButton>
     );
   }
