@@ -69,7 +69,7 @@ export const Provider = (props) => {
       });
     }
 
-    if (questionNumber <= 10) {
+    if (questionNumber < 10) {
       setQuestionNumber((prevQuestionNumber) => {
         return prevQuestionNumber + 1;
       });
