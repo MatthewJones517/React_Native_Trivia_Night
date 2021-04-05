@@ -31,7 +31,8 @@ const QABox = () => {
     return (
       <View style={styles.container}>
         <Text style={styles.text}>
-          {questions[questionNumber - 1].answer.replace(/\\/g, "")}
+          {questions[questionNumber - 1].answer.charAt(0).toUpperCase() +
+            questions[questionNumber - 1].answer.replace(/\\/g, "").slice(1)}
         </Text>
       </View>
     );
