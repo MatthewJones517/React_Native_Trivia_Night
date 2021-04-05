@@ -27,10 +27,16 @@ export const Provider = (props) => {
       const returnedQuestions = await result.json();
 
       // Filter out the questions that have been reported as Invalid
-      // (Require a picture, audio clip, etc...)
-      const filteredQuestions = returnedQuestions.filter(
-        (question) => question.invalid_count === null
-      );
+      // (Require a picture, audio clip, etc...). Also, the API has some
+      // badly sanitized data, so this checks for that as well.
+      const filteredQuestions = returnedQuestions.filter((question) => {
+        return (
+          question.invalid_count === null &&
+          question.value !== null &&
+          question.question !== null &&
+          question.answer !== null
+        );
+      });
 
       // Make sure we have at least 10 questions. If not, keep pinging the API
       // until we have 10 good questions.
@@ -61,9 +67,11 @@ export const Provider = (props) => {
       });
     }
 
-    setQuestionNumber((prevQuestionNumber) => {
-      return prevQuestionNumber + 1;
-    });
+    if (questionNumber <= 10) {
+      setQuestionNumber((prevQuestionNumber) => {
+        return prevQuestionNumber + 1;
+      });
+    }
   };
 
   return (
