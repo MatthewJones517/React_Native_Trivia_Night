@@ -28,9 +28,11 @@ const QABox = () => {
   }
 
   if (isAnswerRevealed) {
-    <View style={styles.container}>
-      <Text style={styles.text}>{questions[questionNumber - 1].answer}</Text>
-    </View>;
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text}>{questions[questionNumber - 1].answer}</Text>
+      </View>
+    );
   }
 
   return (
