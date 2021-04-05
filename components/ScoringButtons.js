@@ -5,8 +5,16 @@ import { GameContext } from "../components/Context";
 
 import BigOrangeButton from "../components/BigOrangeButton";
 
-const ScoringButtons = () => {
-  const { actions } = useContext(GameContext);
+const ScoringButtons = ({ navigation }) => {
+  const { actions, questionNumber } = useContext(GameContext);
+
+  const handleScoreUpdate = (isCorrect) => {
+    actions.updateScore(isCorrect);
+
+    if (questionNumber === 10) {
+      navigation.navigate("FinalScore");
+    }
+  };
 
   let [fontsLoaded] = useFonts({
     "Roboto-Regular": require("../assets/fonts/Roboto/Roboto-Regular.ttf"),
@@ -20,7 +28,9 @@ const ScoringButtons = () => {
         <BigOrangeButton
           width="125"
           height="125"
-          handlePress={() => actions.updateScore(false)}
+          handlePress={() => {
+            handleScoreUpdate(false);
+          }}
         >
           <Image
             source={require("../assets/thumbsdown.png")}
@@ -32,7 +42,9 @@ const ScoringButtons = () => {
         <BigOrangeButton
           width="125"
           height="125"
-          handlePress={() => actions.updateScore(true)}
+          handlePress={() => {
+            handleScoreUpdate(true);
+          }}
         >
           <Image
             source={require("../assets/thumbsup.png")}
