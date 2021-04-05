@@ -52,7 +52,19 @@ export const Provider = (props) => {
   const handleRevealAnswer = () => {
     setIsAnswerRevealed(true);
   };
-  const handleUpdateScore = false;
+  const handleUpdateScore = (answeredCorrectly) => {
+    setIsAnswerRevealed(false);
+
+    if (answeredCorrectly) {
+      setScore((prevScore) => {
+        return prevScore + questions[questionNumber - 1].value;
+      });
+    }
+
+    setQuestionNumber((prevQuestionNumber) => {
+      return prevQuestionNumber + 1;
+    });
+  };
 
   return (
     <GameContext.Provider

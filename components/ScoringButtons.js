@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Text, View, StyleSheet, ActivityIndicator, Image } from "react-native";
 import { useFonts } from "expo-font";
+import { GameContext } from "../components/Context";
 
 import BigOrangeButton from "../components/BigOrangeButton";
 
 const ScoringButtons = () => {
+  const { actions } = useContext(GameContext);
+
   let [fontsLoaded] = useFonts({
     "Roboto-Regular": require("../assets/fonts/Roboto/Roboto-Regular.ttf"),
   });
@@ -14,7 +17,11 @@ const ScoringButtons = () => {
   } else {
     return (
       <View style={styles.container}>
-        <BigOrangeButton width="125" height="125">
+        <BigOrangeButton
+          width="125"
+          height="125"
+          handlePress={() => actions.updateScore(false)}
+        >
           <Image
             source={require("../assets/thumbsdown.png")}
             style={styles.thumbsUpDown}
@@ -22,7 +29,11 @@ const ScoringButtons = () => {
           <Text style={styles.buttonText}>Doh!</Text>
         </BigOrangeButton>
 
-        <BigOrangeButton width="125" height="125">
+        <BigOrangeButton
+          width="125"
+          height="125"
+          handlePress={() => actions.updateScore(true)}
+        >
           <Image
             source={require("../assets/thumbsup.png")}
             style={styles.thumbsUpDown}
