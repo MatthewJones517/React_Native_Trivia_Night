@@ -1,10 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import {
-  Text,
-  SafeAreaView,
-  StyleSheet,
-  ActivityIndicator,
-} from "react-native";
+import { SafeAreaView, StyleSheet } from "react-native";
 import { GameContext } from "../components/Context";
 
 import Wrapper from "../components/Wrapper";
