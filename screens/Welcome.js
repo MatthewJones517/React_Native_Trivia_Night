@@ -12,21 +12,21 @@ const Welcome = ({ navigation }) => {
 
   if (!fontsLoaded) {
     return <ActivityIndicator />;
-  } else {
-    return (
-      // Display Welcome Screen
-      <Wrapper>
-        <Image source={require("../assets/logo.png")} style={styles.image} />
-        <BigOrangeButton
-          width="350"
-          height="150"
-          handlePress={() => navigation.navigate("Play")}
-        >
-          <Text style={styles.buttonText}>START GAME</Text>
-        </BigOrangeButton>
-      </Wrapper>
-    );
   }
+
+  return (
+    // Display Welcome Screen
+    <Wrapper>
+      <Image source={require("../assets/logo.png")} style={styles.image} />
+      <BigOrangeButton
+        width="350"
+        height="150"
+        handlePress={() => navigation.navigate("Play")}
+      >
+        <Text style={styles.buttonText}>START GAME</Text>
+      </BigOrangeButton>
+    </Wrapper>
+  );
 };
 
 const styles = StyleSheet.create({
