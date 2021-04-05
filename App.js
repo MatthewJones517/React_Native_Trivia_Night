@@ -6,6 +6,7 @@ import { Provider } from "./components/Context";
 // Screen Imports
 import Welcome from "./screens/Welcome";
 import Play from "./screens/Play";
+import FinalScore from "./screens/FinalScore";
 
 const Stack = createStackNavigator();
 
@@ -22,6 +23,11 @@ export default function App() {
           <Stack.Screen
             name="Play"
             component={Play}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="FinalScore"
+            component={FinalScore}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
