@@ -13,7 +13,7 @@ import QABox from "../components/QABox";
 import RevealButton from "../components/RevealButton";
 import ScoringButtons from "../components/ScoringButtons";
 
-const Play = () => {
+const Play = ({ navigation }) => {
   // Bring in Game Context
   const { actions, isAnswerRevealed } = useContext(GameContext);
 
@@ -30,7 +30,11 @@ const Play = () => {
         <QABox />
         {
           // Display appropriate buttons
-          isAnswerRevealed ? <ScoringButtons /> : <RevealButton />
+          isAnswerRevealed ? (
+            <ScoringButtons navigation={navigation} />
+          ) : (
+            <RevealButton />
+          )
         }
       </SafeAreaView>
     </Wrapper>
