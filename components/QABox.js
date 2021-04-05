@@ -13,6 +13,7 @@ const QABox = () => {
 
   let [fontsLoaded] = useFonts({
     "Roboto-Regular": require("../assets/fonts/Roboto/Roboto-Regular.ttf"),
+    "Roboto-Bold": require("../assets/fonts/Roboto/Roboto-Bold.ttf"),
   });
 
   if (!fontsLoaded || questionsLoading) {
@@ -40,6 +41,15 @@ const QABox = () => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.categoryContainer}>
+        <Text style={styles.categoryHeader}>Category:</Text>
+        <Text style={styles.category}>
+          {questions[questionNumber - 1].category.title
+            .charAt(0)
+            .toUpperCase() +
+            questions[questionNumber - 1].category.title.slice(1)}
+        </Text>
+      </View>
       <Text style={styles.text}>
         {questions[questionNumber - 1].question.replace(/\\/g, "")}
       </Text>
@@ -61,6 +71,21 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: "#004AAD",
     fontFamily: "Roboto-Regular",
+  },
+  categoryHeader: {
+    fontSize: 24,
+    color: "#004AAD",
+    fontFamily: "Roboto-Bold",
+    textAlign: "center",
+  },
+  category: {
+    fontSize: 20,
+    color: "#004AAD",
+    fontFamily: "Roboto-Regular",
+    textAlign: "center",
+  },
+  categoryContainer: {
+    marginBottom: 30,
   },
 });
 
