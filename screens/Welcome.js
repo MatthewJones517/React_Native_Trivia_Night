@@ -6,6 +6,7 @@ import Wrapper from "../components/Wrapper";
 import BigOrangeButton from "../components/BigOrangeButton";
 
 const Welcome = ({ navigation }) => {
+  // Load component fonts
   let [fontsLoaded] = useFonts({
     "Roboto-Bold": require("../assets/fonts/Roboto/Roboto-Bold.ttf"),
   });

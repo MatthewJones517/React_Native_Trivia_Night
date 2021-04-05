@@ -2,6 +2,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
+// This wrapper is used on every screen, so I made a reusable component out of it
 const Wrapper = ({ children }) => {
   return (
     <View style={styles.container}>

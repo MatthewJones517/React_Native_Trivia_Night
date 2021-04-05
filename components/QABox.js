@@ -4,6 +4,7 @@ import { useFonts } from "expo-font";
 import { GameContext } from "../components/Context";
 
 const QABox = () => {
+  // Load context
   const {
     questionsLoading,
     isAnswerRevealed,
@@ -11,6 +12,7 @@ const QABox = () => {
     questionNumber,
   } = useContext(GameContext);
 
+  // Load component fonts
   let [fontsLoaded] = useFonts({
     "Roboto-Regular": require("../assets/fonts/Roboto/Roboto-Regular.ttf"),
     "Roboto-Bold": require("../assets/fonts/Roboto/Roboto-Bold.ttf"),
@@ -20,6 +22,7 @@ const QABox = () => {
     return <ActivityIndicator />;
   }
 
+  // If we don't have any questions, something went wrong. Display error.
   if (!questionsLoading && questions.length === 0) {
     return (
       <View style={styles.container}>
@@ -28,6 +31,7 @@ const QABox = () => {
     );
   }
 
+  // Show the answer if the user has requested it
   if (isAnswerRevealed) {
     return (
       <View style={styles.container}>
@@ -39,6 +43,7 @@ const QABox = () => {
     );
   }
 
+  // Show the question category
   return (
     <View style={styles.container}>
       <View style={styles.categoryContainer}>
@@ -50,6 +55,7 @@ const QABox = () => {
             questions[questionNumber - 1].category.title.slice(1)}
         </Text>
       </View>
+      {/* Show Question */}
       <Text style={styles.text}>
         {questions[questionNumber - 1].question.replace(/\\/g, "")}
       </Text>

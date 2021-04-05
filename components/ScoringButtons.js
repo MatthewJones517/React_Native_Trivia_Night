@@ -6,16 +6,19 @@ import { GameContext } from "../components/Context";
 import BigOrangeButton from "../components/BigOrangeButton";
 
 const ScoringButtons = ({ navigation }) => {
+  // Bring in context
   const { actions, questionNumber } = useContext(GameContext);
 
   const handleScoreUpdate = (isCorrect) => {
     actions.updateScore(isCorrect);
 
+    // Jump to final score screen if we're at the end of the round
     if (questionNumber === 10) {
       navigation.navigate("FinalScore");
     }
   };
 
+  // Load component fonts
   let [fontsLoaded] = useFonts({
     "Roboto-Regular": require("../assets/fonts/Roboto/Roboto-Regular.ttf"),
   });
@@ -24,6 +27,7 @@ const ScoringButtons = ({ navigation }) => {
     return <ActivityIndicator />;
   } else {
     return (
+      // Display scoring buttons
       <View style={styles.container}>
         <BigOrangeButton
           width="125"

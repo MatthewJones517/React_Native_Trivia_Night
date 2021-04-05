@@ -6,10 +6,12 @@ import { GameContext } from "../components/Context";
 import BigOrangeButton from "../components/BigOrangeButton";
 
 const RevealButton = () => {
+  // Bring in component context
   const { questions, questionNumber, actions, questionsLoading } = useContext(
     GameContext
   );
 
+  // Load component fonts
   let [fontsLoaded] = useFonts({
     "Roboto-Bold": require("../assets/fonts/Roboto/Roboto-Bold.ttf"),
   });
@@ -17,6 +19,7 @@ const RevealButton = () => {
   if (!fontsLoaded || questionsLoading) {
     return <ActivityIndicator />;
   } else {
+    // Display the button
     return (
       <BigOrangeButton
         width="300"

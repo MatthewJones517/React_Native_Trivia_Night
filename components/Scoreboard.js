@@ -7,6 +7,7 @@ const Scoreboard = () => {
   // Bring in Game Context
   const { score, questionNumber } = useContext(GameContext);
 
+  // Bring in componenet fonts
   let [fontsLoaded] = useFonts({
     "Roboto-Bold": require("../assets/fonts/Roboto/Roboto-Bold.ttf"),
     "Roboto-Regular": require("../assets/fonts/Roboto/Roboto-Regular.ttf"),
@@ -16,6 +17,7 @@ const Scoreboard = () => {
   if (!fontsLoaded) {
     return <ActivityIndicator />;
   } else {
+    // Display Score
     return (
       <View style={styles.container}>
         <Text style={[styles.white, styles.title]}>SCORE:</Text>

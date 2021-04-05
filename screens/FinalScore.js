@@ -10,6 +10,7 @@ const FinalScore = ({ navigation }) => {
   // Bring in Game Context
   const { score, actions } = useContext(GameContext);
 
+  // Load component Fonts
   let [fontsLoaded] = useFonts({
     "Roboto-Bold": require("../assets/fonts/Roboto/Roboto-Bold.ttf"),
   });

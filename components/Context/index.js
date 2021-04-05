@@ -3,6 +3,7 @@ import React, { useState } from "react";
 export const GameContext = React.createContext();
 
 export const Provider = (props) => {
+  // Initialize State
   const [score, setScore] = useState(0);
   const [questions, setQuestions] = useState([]);
   const [questionsLoading, setQuestionsLoading] = useState(false);
@@ -57,18 +58,22 @@ export const Provider = (props) => {
   };
 
   const handleRevealAnswer = () => {
+    // Show answer
     setIsAnswerRevealed(true);
   };
 
   const handleUpdateScore = (answeredCorrectly) => {
+    // Hide Answer
     setIsAnswerRevealed(false);
 
+    // Update Score
     if (answeredCorrectly) {
       setScore((prevScore) => {
         return prevScore + questions[questionNumber - 1].value;
       });
     }
 
+    // Increase question number up to 10.
     if (questionNumber < 10) {
       setQuestionNumber((prevQuestionNumber) => {
         return prevQuestionNumber + 1;
@@ -77,9 +82,16 @@ export const Provider = (props) => {
   };
 
   const handleGameReset = () => {
+    // Put score back at 0
     setScore(0);
+
+    // Delete all the questions
     setQuestions([]);
+
+    // Reset question number
     setQuestionNumber(1);
+
+    // Download new questions
     handleNewGame();
   };
 
